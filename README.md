@@ -1,24 +1,46 @@
-# Consulta Espacial com SQL Server e Python
+# 🗺️ Consulta Espacial com SQL Server + Python
 
-Este projeto demonstra como utilizar Python para automatizar consultas espaciais em um banco de dados SQL Server com geodados do tipo `geometry`.
+Este projeto demonstra como automatizar uma **consulta espacial** usando **Python** e **SQL Server**, simulando uma tarefa comum em empresas que trabalham com **geoprocessamento**.
+
+---
 
 ## 🔧 Tecnologias utilizadas
 
 - Python 3
-- SQL Server Express
-- pyodbc
-- Dados espaciais (`geometry`, `STContains`)
+- SQL Server Express + SSMS
+- PyODBC (conexão)
+- Pandas (exportação de resultados)
+- Dados espaciais com tipo `geometry`
 
-## 🗺️ O que o script faz
+---
 
-- Conecta ao banco SQL Server
-- Cria um ponto (`POINT(0.5 0.5)`)
-- Verifica quais bairros (polígonos) contêm esse ponto
-- Exibe os resultados no terminal
+## ⚙️ O que o script faz
+
+✅ Conecta ao banco de dados SQL Server  
+✅ Cria um ponto espacial com `STGeomFromText`  
+✅ Consulta quais bairros (polígonos) contêm esse ponto usando `STContains`  
+✅ Exibe os bairros encontrados no terminal  
+✅ Exporta os dados encontrados para um arquivo `resultado.csv`
+
+---
 
 ## ▶️ Como executar
 
-1. Instale as dependências:
+1. Clone o projeto:
+
+```bash
+git clone https://github.com/OtavioDayrots/mapeamento_python.git
+cd mapeamento_python
+```
+
+2. Instale a dependência:
 
 ```bash
 pip install -r requirements.txt
+```
+
+3. Execute o script:
+
+```bash
+python consulta_bairros.py
+```
