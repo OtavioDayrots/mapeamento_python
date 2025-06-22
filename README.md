@@ -29,16 +29,23 @@ Este projeto demonstra como automatizar uma **consulta espacial** usando **Pytho
 
 ## 📁 Estrutura do projeto
 
+```
 mapeamento_python/
 ├── automacao_sqlserver_geo/
-│ ├── dados/
-│ │ └── bairros/ # Contém os arquivos shapefile
-│ ├── database/
-│ │ └── conecta_sqlserver.py # Script de conexão com SQL Server
-│ ├── importacao_shapefile.py # Importa shapefile para o banco
-│ └── consulta_bairros.py # Faz a consulta espacial interativa
-├── requirements.txt
+│   ├── dados/
+│   │   └── bairros/          # Contém os arquivos shapefile
+│   ├── database/
+│   │   ├── __init__.py
+│   │   └── conecta_sqlserver.py  # Script de conexão com SQL Server
+│   ├── consulta_espacial.py      # Faz a consulta espacial interativa
+│   ├── cria_shapefile.py         # Cria shapefile de exemplo
+│   ├── importacao_shapefile.py   # Importa shapefile para o banco
+│   ├── resultado.csv             # Arquivo de resultado gerado
+│   └── requirements.txt          # Dependências do projeto
+├── SQL/
+│   └── scripts.sql              # Scripts SQL do projeto
 └── README.md
+```
 
 ## ▶️ Como executar
 
