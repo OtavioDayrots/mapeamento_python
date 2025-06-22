@@ -9,6 +9,6 @@ CREATE TABLE Bairros (
 INSERT INTO Bairros (nome, codigo, area)
 VALUES (
     'Centro',
-    123,
+    1001,
     geometry::STGeomFromText('POLYGON((0 0, 0 1, 1 1, 1 0, 0 0))', 0)
 );

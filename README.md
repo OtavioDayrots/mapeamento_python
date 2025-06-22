@@ -8,21 +8,37 @@ Este projeto demonstra como automatizar uma **consulta espacial** usando **Pytho
 
 - Python 3
 - SQL Server Express + SSMS
-- PyODBC (conexão)
-- Pandas (exportação de resultados)
-- Dados espaciais com tipo `geometry`
+- PyODBC (conexão com banco de dados)
+- Pandas (exportação para CSV)
+- GeoPandas (leitura e conversão de shapefiles)
+- Dados espaciais com tipo `geometry` (SQL Server)
 
 ---
 
-## ⚙️ O que o script faz
+## ⚙️ O que o projeto faz
 
 ✅ Conecta ao banco de dados SQL Server  
-✅ Cria um ponto espacial com `STGeomFromText`  
-✅ Consulta quais bairros (polígonos) contêm esse ponto usando `STContains`  
+✅ Lê shapefile (.shp) com GeoPandas  
+✅ Converte as geometrias para WKT e armazena no SQL Server  
+✅ Permite ao usuário digitar coordenadas (X, Y)  
+✅ Consulta quais bairros contêm esse ponto usando `STContains()`  
 ✅ Exibe os bairros encontrados no terminal  
-✅ Exporta os dados encontrados para um arquivo `resultado.csv`
+✅ Exporta os resultados para um arquivo `resultado.csv`
 
 ---
+
+## 📁 Estrutura do projeto
+
+mapeamento_python/
+├── automacao_sqlserver_geo/
+│ ├── dados/
+│ │ └── bairros/ # Contém os arquivos shapefile
+│ ├── database/
+│ │ └── conecta_sqlserver.py # Script de conexão com SQL Server
+│ ├── importacao_shapefile.py # Importa shapefile para o banco
+│ └── consulta_bairros.py # Faz a consulta espacial interativa
+├── requirements.txt
+└── README.md
 
 ## ▶️ Como executar
 
@@ -39,8 +55,32 @@ cd mapeamento_python
 pip install -r requirements.txt
 ```
 
-3. Execute o script:
+3.  Execute a importação do shapefile:
 
 ```bash
-python consulta_bairros.py
+python automacao_sqlserver_geo/importacao_shapefile.py
 ```
+
+4. Execute a consulta espacial:
+
+```bash
+python automacao_sqlserver_geo/consulta_espacial.py
+```
+
+## 💡 Exemplo de uso
+
+```bash
+Informe o eixo X: 1.5
+Informe o eixo Y: 0.5
+
+Bairros encontrados que contêm o ponto (1.5, 0.5):
+- Centro
+
+Arquivo 'resultado.csv' gerado com sucesso!
+```
+
+## 🤝 Autor
+
+Otávio Dayrots  
+🔗 [GitHub](https://github.com/OtavioDayrots)  
+📧 Em busca de oportunidade na área de desenvolvimento e geotecnologia

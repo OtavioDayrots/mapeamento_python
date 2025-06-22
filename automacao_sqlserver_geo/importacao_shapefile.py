@@ -3,15 +3,14 @@ from database.conecta_sqlserver import conectar
 
 try:
     # Ler shapefile
-    gdf = gpd.read_file("automacao_sqlserver_geo/dados/bairros/campo_grande.shp")
+    gdf = gpd.read_file("automacao_sqlserver_geo/dados/bairros/bairros_simulados.shp")
 
     # Converter geometria para WKT e extrair colunas necessárias
     gdf['wkt'] = gdf.geometry.apply(lambda x: x.wkt)
-    dados_para_inserir = gdf[['NM_MUNICIP', 'CD_GEOCMU', 'wkt']]
+    dados_para_inserir = gdf[['nome', 'codigo', 'wkt']]
 
     con = conectar()
     cursor = con.cursor()
-
 
     # Criar tabela (se não existir)
     cursor.execute("""
@@ -29,8 +28,8 @@ try:
 
     # Inserir dados
     for index, row in dados_para_inserir.iterrows():
-        nome = row['NM_MUNICIP']
-        codigo = int(row['CD_GEOCMU'])
+        nome = row['nome']
+        codigo = int(row['codigo'])
         wkt = row['wkt']
         query = """
         INSERT INTO dbo.Bairros (nome, codigo, area)
