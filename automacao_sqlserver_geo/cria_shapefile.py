@@ -1,3 +1,4 @@
+# ARQUIVO USADO APENAS PARA CRIA SHAPEFILE SIMULADO
 import shapefile
 
 # Criar o shapefile (ESRI Shapefile)
