@@ -1,2 +1,4 @@
 pyodbc
 pandas
+geopandas
+shapefile
